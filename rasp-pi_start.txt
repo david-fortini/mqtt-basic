@@ -1,0 +1,17 @@
+
+# upgrade os
+sudo apt-get update && sudo apt-get upgrade
+# get ssl libraries
+sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+
+# see https://stackoverflow.com/questions/41328451/ssl-module-in-python-is-not-available-when-installing-package-with-pip3
+wget https://www.python.org/ftp/python/3.9.5/Python-3.9.5.tgz
+tar -zxvf Python-3.9.5.tgz
+cd Python-3.9.5
+./configure
+make && sudo make install # needed to put python in /local/bin/ as executable
+cd .. 
+echo 'alias py="/usr/local/bin/python3.9"' >> ~/.bashrc # append to init file
+
+
+source .bashrc # reload bashrc the get the alias
